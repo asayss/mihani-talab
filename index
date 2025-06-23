@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج تسجيل الطلب</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            font-family: inherit;
+        }
+
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+            transform: translateY(-2px);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 600;
+            animation: slideIn 0.5s ease;
+            line-height: 1.6;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .icon {
+            font-size: 1.2em;
+            margin-left: 8px;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 نموذج تسجيل الطلب</h1>
+        
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="name">
+                    <span class="icon">👤</span>
+                    الاسم الكامل
+                </label>
+                <input type="text" id="name" name="name" required placeholder="أدخل اسمك الكامل">
+            </div>
+
+            <div class="form-group">
+                <label for="profession">
+                    <span class="icon">💼</span>
+                    المهنة
+                </label>
+                <input type="text" id="profession" name="profession" required placeholder="أدخل مهنتك">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">
+                    <span class="icon">📱</span>
+                    رقم الهاتف
+                </label>
+                <input type="tel" id="phone" name="phone" required placeholder="أدخل رقم هاتفك">
+            </div>
+
+            <div class="form-group">
+                <label for="address">
+                    <span class="icon">📍</span>
+                    العنوان
+                </label>
+                <textarea id="address" name="address" required placeholder="أدخل عنوانك الكامل"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <span class="icon">📤</span>
+                إرسال الطلب
+            </button>
+        </form>
+
+        <div id="successMessage" class="success-message">
+            <span class="icon">✅</span>
+            <div>
+                تم إرسال طلبك بنجاح! ستتوصل بإشعار عند إنشاء حسابك
+                <br><br>
+                يمكنك تعديل المعطيات وإدراج الصور ومختلف المعلومات الأخرى بعد إنشاء الحساب
+                <br><br>
+                شكراً لك 🙏
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // جمع البيانات من النموذج
+            const name = document.getElementById('name').value;
+            const profession = document.getElementById('profession').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            
+            // تكوين رسالة البريد الإلكتروني
+            const subject = 'طلب تسجيل جديد';
+            const message = `السلام عليكم ورحمة الله وبركاته
+
+تم استلام طلب تسجيل جديد بالتفاصيل التالية:
+
+الاسم: ${name}
+المهنة: ${profession}
+رقم الهاتف: ${phone}
+العنوان: ${address}
+
+تاريخ الإرسال: ${new Date().toLocaleDateString('ar-SA')}
+وقت الإرسال: ${new Date().toLocaleTimeString('ar-SA')}
+
+مع تحياتي`;
+
+            // إرسال البريد باستخدام EmailJS أو FormSubmit
+            sendEmail(name, profession, phone, address, message);
+            
+            // إظهار رسالة النجاح
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // إعادة تعيين النموذج
+            this.reset();
+            
+            // إخفاء رسالة النجاح بعد 8 ثوان
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 8000);
+        });
+
+        function sendEmail(name, profession, phone, address, message) {
+            // إنشاء نموذج مخفي للإرسال
+            const form = document.createElement('form');
+            form.action = 'https://formsubmit.co/asayss.2024@gmail.com';
+            form.method = 'POST';
+            form.style.display = 'none';
+            
+            // إضافة الحقول
+            const fields = [
+                { name: '_subject', value: 'طلب تسجيل جديد' },
+                { name: '_captcha', value: 'false' },
+                { name: '_template', value: 'table' },
+                { name: 'الاسم', value: name },
+                { name: 'المهنة', value: profession },
+                { name: 'رقم_الهاتف', value: phone },
+                { name: 'العنوان', value: address },
+                { name: 'التاريخ', value: new Date().toLocaleDateString('ar-SA') },
+                { name: 'الوقت', value: new Date().toLocaleTimeString('ar-SA') }
+            ];
+            
+            fields.forEach(field => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = field.name;
+                input.value = field.value;
+                form.appendChild(input);
+            });
+            
+            document.body.appendChild(form);
+            form.submit();
+        }
+
+        // إضافة تأثيرات تفاعلية للحقول
+        const inputs = document.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
